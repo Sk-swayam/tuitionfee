@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unpaid Students - {{ month }}</title>
+</head>
+<body>
+    <h2>Unpaid Students - {{ month }}</h2>
+
+    {% if data %}
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Contact</th>
+            <th>End Date</th>
+            <th>Days Left</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[9] }}</td>
+            <td>{{ row[10] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No unpaid students.</p>
+    {% endif %}
+
+    <br><a href="/">Back</a>
+</body>
+</html>

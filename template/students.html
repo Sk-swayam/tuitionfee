@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Fee Records - {{ month }}</title>
+    <script>
+        function confirmDelete(url) {
+            if (confirm("Are you sure you want to delete this entry?")) {
+                window.location.href = url;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Student Fee Records - {{ month }}</h2>
+
+    <table border="1" cellpadding="5">
+        {% for row in data %}
+        <tr>
+            {% for col in row %}
+            <td>{{ col }}</td>
+            {% endfor %}
+            {% if loop.index0 != 0 %}
+            <td><button onclick="confirmDelete('/delete/{{ month.replace(' ', '_') }}/{{ loop.index0 }}')">Delete</button></td>
+            {% else %}
+            <td><b>Action</b></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/">Add Another Student</a> |
+    <a href="/report/{{ month.replace(' ', '_') }}">View Unpaid Report</a>
+</body>
+</html>
